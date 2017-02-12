@@ -25,14 +25,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   :  |   ,  |   .  |   P  |   Y  | Tab  |           | Tab  |   F  |   G  |   C  |   R  |   L  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   A  |   O  |   E  |   U  |   I  |------|           |------|   D  |   H  |   T  |   N  |   S  |   -    |
+ * | Mirror |   A  |   O  |   E  |   U  |   I  |------|           |------|   D  |   H  |   T  |   N  |   S  |        |
  * |--------+------+------+------+------+------| Del  |           | BkSp |------+------+------+------+------+--------|
  * | LShift |   '  |   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |   Z  | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------|
- *   |  `   |      | MDIA | Left | Right|                                       |  Up  | Down |   /  |      |        |
+ *   |  `   |      | MDIA | Left | Right|                                       |  Up  | Down |      |      |        |
  *   `----------------------------------'                                       `------------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | App  | LGui |       | Alt  | Ctrl |
+ *                                        | Alt  | LGui |       | App  | Ctrl |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | Home |       | PgUp |      |      |
  *                                 | Space| SYM  |------|       |------| Esc  |Enter |
@@ -44,20 +44,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_NO,   KC_NO,    KC_7,    KC_5,    KC_3,   KC_1,  DF_QWER,
         KC_NO,   KC_SCLN,  KC_COMM, KC_DOT,  KC_P,   KC_Y,  KC_TAB,
-        KC_NO,   KC_A,     KC_O,    KC_E,    KC_U,   KC_I,
+        KC_FN3,  KC_A,     KC_O,    KC_E,    KC_U,   KC_I,
         KC_LSFT, KC_QUOT,  KC_Q,    KC_J,    KC_K,   KC_X,  KC_DELT,
         KC_GRV,  KC_NO,    KC_FN2,  KC_LEFT, KC_RGHT,
-                                              ALT_T(KC_APP),  KC_LGUI,
+                                                    KC_LALT,  KC_LGUI,
                                                               KC_HOME,
                                             KC_SPC, MO(SYMB), KC_END,
 
         // right hand
         KC_NO,    KC_9, KC_0,  KC_2,    KC_4,    KC_6,   KC_8,
         KC_TAB,   KC_F, KC_G,  KC_C,    KC_R,    KC_L,   KC_NO,
-                  KC_D, KC_H,  KC_T,    KC_N,    KC_S,   KC_MINS,
+                  KC_D, KC_H,  KC_T,    KC_N,    KC_S,   KC_NO,
         KC_BSPC,  KC_B, KC_M,  KC_W,    KC_V,    KC_Z,   KC_RSFT,
-                        KC_UP, KC_DOWN, KC_SLSH, KC_NO,  KC_NO,
-        KC_LALT, KC_RCTL,
+                        KC_UP, KC_DOWN, KC_NO,   KC_NO,  KC_NO,
+        ALT_T(KC_APP), KC_RCTL,
         KC_PGUP,
         KC_PGDN, KC_ESC, KC_ENT
     ),
@@ -110,11 +110,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,---------------------------------------------------.           ,--------------------------------------------------.
  * |Version  |      |  F7  |  F5  |  F3  |  F1  |  F11 |           |  F12 |  F9  |  F10 |  F2  |  F4  |  F6  |   F8   |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |         |      |   @  |   {  |   }  |   |  |      |           |      |  \   |   *  |      |   +  |      |        |
+ * |         |      |   @  |   {  |   }  |   |  |      |           |      |  \   |   *  |   -  |   +  |      |        |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |         |   #  |   $  |   (  |   )  |   `  |------|           |------|  =   |   [  |   ]  |   &  |   !  |        |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |         |   %  |   ^  |      |      |   ~  |      |           |      |      |      |      |      |      |        |
+ * |         |   %  |   ^  |      |      |   ~  |      |           |      |  /   |      |   _  |      |   ?  |        |
  * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | EPRM  |      |      |      |      |                                       |      |      |      |      |      |
  *   `-----------------------------------'                                       `----------------------------------'
@@ -139,9 +139,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
        // right hand
        KC_F12,  KC_F9,   KC_F10,  KC_F2,   KC_F4,   KC_F6,   KC_F8,
-       KC_TRNS, KC_BSLS, KC_ASTR, KC_TRNS, KC_PLUS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_BSLS, KC_ASTR, KC_MINS, KC_PLUS, KC_TRNS, KC_TRNS,
                 KC_EQL,  KC_LBRC, KC_RBRC, KC_AMPR, KC_EXLM, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_SLSH, KC_TRNS, KC_FN4,  KC_TRNS, KC_FN5,  KC_TRNS,
                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
@@ -195,6 +195,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const uint16_t PROGMEM fn_actions[] = {
     [1] = ACTION_LAYER_TAP_TOGGLE(SYMB),               // FN1 - Momentary Layer 1 (Symbols)
     [2] = ACTION_LAYER_TAP_TOGGLE(MDIA),               // FN2 - Momentary Layer 2 (Media)
+    [3] = ACTION_SWAP_HANDS(),                         // FN3 - Momentary swap hands (mirror)
+    [4] = ACTION_MODS_KEY(MOD_LSFT, KC_MINS),          // FN4 - Underscore
+    [5] = ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),          // FN5 - Question mark
 };
 static bool blue_led = false;
 
