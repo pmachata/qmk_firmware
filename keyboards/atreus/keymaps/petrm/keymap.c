@@ -27,40 +27,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Symbol layer
  *
+ * ### - The keys that need to stay transparent to allow access to modifier keys
+ *       in the base layer.
+ *
  * ,-----------------------------------               ------------------------------------
- * |      |   @  |  {   |   }  |  |   |               |  \   |   *  |   -  |   +  |      |
+ * |      |   @  |  {   |   }  |  |   |               |  =   |   *  |   -  |   +  |      |
  * |------+------+------+------+------+               +------+------+------+------+------|
- * |   #  |   $  |  (   |   )  |  `   |               |  =   |   ;  |   :  |   &  |   !  |
+ * |   #  |   $  |  (   |   )  |  `   |               |  \   |   ;  |   :  |   &  |  !   |
  * |------+------+------+------+------|------. .------|------+------+------+------+------|
- * |   %  |   ^  |  [   |   ]  |  ~   |      | |      |  /   |      |   _  |      |   ?  |
- * |------+------+------+------+------+      | | COMB +------+------+------+------+------|
- * |      |      |      |      |      |------' '------|      |      |      |      |      |
+ * |   %  |   ^  |  [   |   ]  |  ~   |      | |      |  /   |      |   _  |      |  ?   |
+ * |------+------+------+------+------+ ###  | | COMB +------+------+------+------+------|
+ * |      |      | ###  |      |      |------' '------| ###  | ###  | ###  |      |      |
  * '----------------------------------'               `----------------------------------'
  */
 [SYMB] = {
-    {KC_TRNS, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS, KC_BSLS, KC_ASTR, KC_MINS, KC_PLUS, KC_TRNS },
-    {KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS, KC_EQL,  KC_SCLN, KC_FN6,  KC_AMPR, KC_EXLM },
-    {KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS, KC_SLSH, KC_TRNS, KC_FN4,  KC_TRNS, KC_FN5  },
-    {KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(COMB),KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS }
+    {KC_NO,   KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS, KC_EQL,  KC_ASTR, KC_MINS, KC_PLUS, KC_NO   },
+    {KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS, KC_BSLS, KC_SCLN, KC_FN6,  KC_AMPR, KC_EXLM },
+    {KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS, KC_SLSH, KC_NO,   KC_FN4,  KC_NO,   KC_FN5  },
+    {KC_NO,   KC_NO,   KC_TRNS, KC_NO,   KC_NO,   MO(COMB),KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_NO,  },
 },
 
 /* Numbers layer
  *
  * ,-----------------------------------               ------------------------------------
- * |      |      |      |      |      |               |      |      |      |      |      |
+ * |      |      |  .   |      |      |               |  =   |  *   |  -   |  +   |      |
  * |------+------+------+------+------+               +------+------+------+------+------|
  * |  8   |  7   |  5   |  3   |  1   |               |  9   |  0   |  2   |  4   |  6   |
  * |------+------+------+------+------|------. .------|------+------+------+------+------|
- * |      |      | Down |  Up  |      |      | |      |      | Left | Right|      |      |
- * |------+------+------+------+------| COMB | |      +------+------+------+------+------|
- * |      |      |      | Del  |      |------' '------|      |      |      |      |      |
+ * |      |      | Down |  Up  |      |      | |      |  /   | Left | Right|      |      |
+ * |------+------+------+------+------| COMB | | ###  +------+------+------+------+------|
+ * |      |      | ###  | Del  |      |------' '------| ###  | ###  | ###  |      |      |
  * '----------------------------------'               `----------------------------------'
  */
 [NUMB] = {
-    {KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS },
-    {KC_8,    KC_7,    KC_5,    KC_3,    KC_1,    KC_TRNS, KC_9,    KC_0,    KC_2,    KC_4,    KC_6    },
-    {KC_TRNS, KC_TRNS, KC_DOWN, KC_UP,   KC_TRNS, MO(COMB),KC_TRNS, KC_LEFT, KC_RGHT, KC_TRNS, KC_TRNS },
-    {KC_TRNS, KC_TRNS, KC_TRNS, KC_DELT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS }
+    {KC_NO,   KC_NO,   KC_DOT,  KC_NO,   KC_NO,   KC_TRNS, KC_EQL,  KC_ASTR, KC_MINS, KC_PLUS, KC_NO  },
+    {KC_8,    KC_7,    KC_5,    KC_3,    KC_1,    KC_TRNS, KC_9,    KC_0,    KC_2,    KC_4,    KC_6   },
+    {KC_NO,   KC_NO,   KC_DOWN, KC_UP,   KC_NO,   MO(COMB),KC_SLSH, KC_LEFT, KC_RGHT, KC_NO,   KC_NO  },
+    {KC_NO,   KC_NO,   KC_TRNS, KC_DELT, KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_NO  },
 },
 
 /* Combo layer
@@ -71,15 +74,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | F8   | F7   | F5   | F3   | F1   |               | F9   | F10  | F2   | F4   | F6   |
  * |------+------+------+------+------|------. .------|------+------+------+------+------|
  * |      |      |      |      | F11  |      | |      |      |      | F12  |      |      |
- * |------+------+------+------+------|      | |      +------+------+------+------+------|
- * |      |      |      |      |      |------' '------|      |      |      |      |      |
+ * |------+------+------+------+------| ###  | | ###  +------+------+------+------+------|
+ * |      |      | ###  |      |      |------' '------| ###  | ###  | ###  |      |      |
  * '----------------------------------'               `----------------------------------'
  */
 [COMB] = {
-    {RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS },
-    {KC_F8,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_TRNS, KC_F9,   KC_F10,  KC_F2,   KC_F4,   KC_F6   },
-    {KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_F11,  KC_TRNS, KC_TRNS, KC_TRNS, KC_F12,  KC_TRNS, KC_TRNS },
-    {KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS }
+    {RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO },
+    {KC_F8,   KC_F7,   KC_F5,   KC_F3,   KC_F1,   KC_TRNS, KC_F9,   KC_F10,  KC_F2,   KC_F4,   KC_F6 },
+    {KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_F11,  KC_TRNS, KC_NO,   KC_NO,   KC_F12,  KC_NO,   KC_NO },
+    {KC_NO,   KC_NO,   KC_TRNS, KC_NO,   KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_NO },
 },
 };
 
